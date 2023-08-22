@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Define a Player model, which represents the `players` table in the database.
+model Player {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique(map: "uk_player_on_name") @db.VarChar(50)
+  coins     Decimal  @default(0)
+  goods     Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+  profile   Profile?
+
+  @@map("players")
+}
+
+// Define a Profile model, which represents the `profiles` table in the database.
+model Profile {
+  playerId  Int    @id @map("player_id")
+  biography String @db.Text
+
+  // Define a 1:1 relation between the `Player` and `Profile` models with Foreign Key constraints.
+  player Player @relation(fields: [playerId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_profile_on_player_id")
+
+  @@map("profiles")
+}

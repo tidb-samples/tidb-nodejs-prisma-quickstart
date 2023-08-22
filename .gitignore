@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Enviorment Variables
+.env
+
+# IDE Config
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
