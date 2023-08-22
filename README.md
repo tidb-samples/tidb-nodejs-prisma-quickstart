@@ -148,7 +148,7 @@ Prisma supports loads environment variables from the `.env` file. Please follow 
 
    1. Make a copy of the `.env.example` file to the `.env` file.
    2. Edit the `.env` file, and replace the placeholders for `<host>`, `<user>`, and `<password>` with the copied connection parameters.
-   3. Add `?sslaccept=strict&sslcert=/path/to/ca.pem` to the end of the `DATABASE_URL` value to enable TLS connections with specified CA certificate, which is downloaded in the previous step. **(Required for public endpoint)**
+   3. Add `?sslaccept=strict&sslcert=/path/to/ca.pem` to the end of the `DATABASE_URL` value to enable TLS connections with specified CA certificate, which is downloaded in the previous step. **(Recommend for public endpoint)**
 
    ```dotenv
    DATABASE_URL=mysql://<user>:<password>@<host>:4000/test?sslaccept=strict&sslcert=/path/to/ca.pem
@@ -176,13 +176,13 @@ For more information, please check the documentation of [Prisma MySQL connector]
 
 ### 5. Create the database schema
 
-Run following command to invoke [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) to initialize the database with the schema defined in [`prisma/prisma.schema`](prisma/schema.prisma).
+Run following command to invoke [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) to initialize the database with the data models defined in [`prisma/prisma.schema`](prisma/schema.prisma).
 
 ```shell
 npx prisma migrate
 ```
 
-**Schema defined in `prisma.schema`**:
+**Data models defined in `prisma.schema`**:
 
 ```prisma
 // Define a Player model, which represents the `players` table in the database.
@@ -351,7 +351,7 @@ For more information, refer to the [Raw database access](https://www.prisma.io/d
 
 For TiDB v6.6.0 or later, it's recommended that using [Foreign Key Constraints](https://docs.pingcap.com/tidb/stable/foreign-key) instead of [Prisma Relation Mode](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/relation-mode) for [referential integrity](https://en.wikipedia.org/wiki/Referential_integrity?useskin=vector) checking.
 
-Relation Mode is the emulation of referential integrity in Prisma Client side. It will have some performance implications as it uses additional database queries to maintain referential integrity.
+Relation Mode is the emulation of referential integrity in Prisma Client side. The feature may have some performance implications for the application as it requires additional database queries to maintain referential integrity.
   
 > **Notice:**
 >
