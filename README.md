@@ -179,10 +179,11 @@ For more information, please check the documentation of [Prisma MySQL connector]
 Run following command to invoke [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) to initialize the database with the data models defined in [`prisma/prisma.schema`](prisma/schema.prisma).
 
 ```shell
-npx prisma migrate
+npx prisma migrate dev
 ```
 
-**Data models defined in `prisma.schema`**:
+<details>
+<summary><b>Data models defined in <code>prisma.schema</code></b></summary>
 
 ```prisma
 // Define a Player model, which represents the `players` table in the database.
@@ -208,6 +209,8 @@ model Profile {
   @@map("profiles")
 }
 ```
+
+</details>
 
 To learn how to define data models in Prisma, please check the [Data model](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model) documentation.
 

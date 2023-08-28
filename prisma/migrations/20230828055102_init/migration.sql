@@ -12,12 +12,10 @@ CREATE TABLE `players` (
 
 -- CreateTable
 CREATE TABLE `profiles` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `biography` TEXT NOT NULL,
     `player_id` INTEGER NOT NULL,
+    `biography` TEXT NOT NULL,
 
-    UNIQUE INDEX `profiles_player_id_key`(`player_id`),
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`player_id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
