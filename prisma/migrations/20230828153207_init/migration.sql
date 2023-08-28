@@ -19,4 +19,4 @@ CREATE TABLE `profiles` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `profiles` ADD CONSTRAINT `fk_profile_on_player_id` FOREIGN KEY (`player_id`) REFERENCES `players`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `profiles` ADD CONSTRAINT `fk_profile_on_player_id` FOREIGN KEY (`player_id`) REFERENCES `players`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
